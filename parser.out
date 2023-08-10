@@ -1,0 +1,156 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CADENA
+    ID
+    IGUAL
+    KILOBYTE
+    PATH
+    SIZE
+
+Grammar
+
+Rule 0     S' -> init
+Rule 1     init -> list_commands
+Rule 2     list_commands -> list_commands commands
+Rule 3     list_commands -> commands
+Rule 4     commands -> command_mkdisk
+Rule 5     commands -> command_rmdisk
+Rule 6     command_mkdisk -> MKDISK MAYOR_QUE UNIT
+Rule 7     command_rmdisk -> ENTERO
+
+Terminals, with rules where they appear
+
+CADENA               : 
+ENTERO               : 7
+ID                   : 
+IGUAL                : 
+KILOBYTE             : 
+MAYOR_QUE            : 6
+MKDISK               : 6
+PATH                 : 
+SIZE                 : 
+UNIT                 : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+command_mkdisk       : 4
+command_rmdisk       : 5
+commands             : 2 3
+init                 : 0
+list_commands        : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . init
+    (1) init -> . list_commands
+    (2) list_commands -> . list_commands commands
+    (3) list_commands -> . commands
+    (4) commands -> . command_mkdisk
+    (5) commands -> . command_rmdisk
+    (6) command_mkdisk -> . MKDISK MAYOR_QUE UNIT
+    (7) command_rmdisk -> . ENTERO
+
+    MKDISK          shift and go to state 6
+    ENTERO          shift and go to state 7
+
+    init                           shift and go to state 1
+    list_commands                  shift and go to state 2
+    commands                       shift and go to state 3
+    command_mkdisk                 shift and go to state 4
+    command_rmdisk                 shift and go to state 5
+
+state 1
+
+    (0) S' -> init .
+
+
+
+state 2
+
+    (1) init -> list_commands .
+    (2) list_commands -> list_commands . commands
+    (4) commands -> . command_mkdisk
+    (5) commands -> . command_rmdisk
+    (6) command_mkdisk -> . MKDISK MAYOR_QUE UNIT
+    (7) command_rmdisk -> . ENTERO
+
+    $end            reduce using rule 1 (init -> list_commands .)
+    MKDISK          shift and go to state 6
+    ENTERO          shift and go to state 7
+
+    commands                       shift and go to state 8
+    command_mkdisk                 shift and go to state 4
+    command_rmdisk                 shift and go to state 5
+
+state 3
+
+    (3) list_commands -> commands .
+
+    MKDISK          reduce using rule 3 (list_commands -> commands .)
+    ENTERO          reduce using rule 3 (list_commands -> commands .)
+    $end            reduce using rule 3 (list_commands -> commands .)
+
+
+state 4
+
+    (4) commands -> command_mkdisk .
+
+    MKDISK          reduce using rule 4 (commands -> command_mkdisk .)
+    ENTERO          reduce using rule 4 (commands -> command_mkdisk .)
+    $end            reduce using rule 4 (commands -> command_mkdisk .)
+
+
+state 5
+
+    (5) commands -> command_rmdisk .
+
+    MKDISK          reduce using rule 5 (commands -> command_rmdisk .)
+    ENTERO          reduce using rule 5 (commands -> command_rmdisk .)
+    $end            reduce using rule 5 (commands -> command_rmdisk .)
+
+
+state 6
+
+    (6) command_mkdisk -> MKDISK . MAYOR_QUE UNIT
+
+    MAYOR_QUE       shift and go to state 9
+
+
+state 7
+
+    (7) command_rmdisk -> ENTERO .
+
+    MKDISK          reduce using rule 7 (command_rmdisk -> ENTERO .)
+    ENTERO          reduce using rule 7 (command_rmdisk -> ENTERO .)
+    $end            reduce using rule 7 (command_rmdisk -> ENTERO .)
+
+
+state 8
+
+    (2) list_commands -> list_commands commands .
+
+    MKDISK          reduce using rule 2 (list_commands -> list_commands commands .)
+    ENTERO          reduce using rule 2 (list_commands -> list_commands commands .)
+    $end            reduce using rule 2 (list_commands -> list_commands commands .)
+
+
+state 9
+
+    (6) command_mkdisk -> MKDISK MAYOR_QUE . UNIT
+
+    UNIT            shift and go to state 10
+
+
+state 10
+
+    (6) command_mkdisk -> MKDISK MAYOR_QUE UNIT .
+
+    MKDISK          reduce using rule 6 (command_mkdisk -> MKDISK MAYOR_QUE UNIT .)
+    ENTERO          reduce using rule 6 (command_mkdisk -> MKDISK MAYOR_QUE UNIT .)
+    $end            reduce using rule 6 (command_mkdisk -> MKDISK MAYOR_QUE UNIT .)
+
